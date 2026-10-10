@@ -1,0 +1,372 @@
+{
+  "comment": "Pointing check targets (D40). expect.box is the ground-truth box in native pixels [x, y, width, height], top-left origin. Alternatively expect.text names an OCR'd label whose mark box is the truth. scale = native pixels per point (2 on Retina).",
+  "images": {
+    "synthetic-editor": {
+      "path": "fixtures/synthetic-editor.png",
+      "scale": 2
+    },
+    "real-01": {
+      "path": "fixtures/real-01.png",
+      "scale": 2,
+      "app": "Chrome: Google AI Studio"
+    },
+    "real-03": {
+      "path": "fixtures/real-03.png",
+      "scale": 2,
+      "app": "VS Code"
+    },
+    "real-05": {
+      "path": "fixtures/real-05.png",
+      "scale": 2,
+      "app": "DaVinci Resolve"
+    },
+    "real-06": {
+      "path": "fixtures/real-06.png",
+      "scale": 2,
+      "app": "Preview: PDF slide"
+    }
+  },
+  "targets": [
+    {
+      "id": "syn-export",
+      "image": "synthetic-editor",
+      "question": "the Export button in the toolbar",
+      "expect": {
+        "box": [
+          996,
+          72,
+          150,
+          52
+        ]
+      }
+    },
+    {
+      "id": "syn-edit-menu",
+      "image": "synthetic-editor",
+      "question": "the Edit menu",
+      "expect": {
+        "box": [
+          337,
+          10,
+          45,
+          26
+        ]
+      }
+    },
+    {
+      "id": "syn-logo-layer",
+      "image": "synthetic-editor",
+      "question": "the Logo layer in the Layers panel",
+      "expect": {
+        "box": [
+          20,
+          390,
+          400,
+          60
+        ]
+      }
+    },
+    {
+      "id": "syn-gear",
+      "image": "synthetic-editor",
+      "question": "the settings (gear) icon",
+      "expect": {
+        "box": [
+          2670,
+          68,
+          60,
+          60
+        ]
+      }
+    },
+    {
+      "id": "syn-red-circle",
+      "image": "synthetic-editor",
+      "question": "the red circle on the canvas",
+      "expect": {
+        "box": [
+          800,
+          500,
+          260,
+          260
+        ]
+      }
+    },
+    {
+      "id": "syn-add-layer",
+      "image": "synthetic-editor",
+      "question": "the button that adds a new layer",
+      "expect": {
+        "box": [
+          32,
+          1690,
+          64,
+          64
+        ]
+      }
+    },
+    {
+      "id": "syn-blend",
+      "image": "synthetic-editor",
+      "question": "the blend mode dropdown",
+      "expect": {
+        "box": [
+          2350,
+          424,
+          480,
+          56
+        ]
+      }
+    },
+    {
+      "id": "syn-zoom",
+      "image": "synthetic-editor",
+      "question": "the current zoom level",
+      "expect": {
+        "box": [
+          2420,
+          84,
+          66,
+          26
+        ]
+      }
+    },
+    {
+      "id": "chrome-billing",
+      "image": "real-01",
+      "question": "the Set up billing button near the top right of the page",
+      "expect": {
+        "box": [
+          2628,
+          336,
+          220,
+          64
+        ]
+      }
+    },
+    {
+      "id": "chrome-api-keys",
+      "image": "real-01",
+      "question": "the API Keys item in the left sidebar",
+      "expect": {
+        "box": [
+          40,
+          500,
+          180,
+          48
+        ]
+      }
+    },
+    {
+      "id": "chrome-time-range",
+      "image": "real-01",
+      "question": "the Time Range dropdown",
+      "expect": {
+        "box": [
+          1284,
+          472,
+          390,
+          64
+        ]
+      }
+    },
+    {
+      "id": "chrome-bookmark",
+      "image": "real-01",
+      "question": "the bookmark (star) icon in the browser's address bar",
+      "expect": {
+        "box": [
+          2570,
+          172,
+          40,
+          40
+        ]
+      }
+    },
+    {
+      "id": "vscode-source-control",
+      "image": "real-03",
+      "question": "the Source Control icon in the left activity bar",
+      "expect": {
+        "box": [
+          24,
+          322,
+          44,
+          44
+        ]
+      }
+    },
+    {
+      "id": "vscode-progress-file",
+      "image": "real-03",
+      "question": "the DEMO_PROGRESS.md file in the Explorer",
+      "expect": {
+        "text": "DEMO_PROGRESS.md"
+      }
+    },
+    {
+      "id": "vscode-send",
+      "image": "real-03",
+      "question": "the send (up-arrow) button of the message box at the bottom of the middle panel",
+      "expect": {
+        "box": [
+          2164,
+          1824,
+          48,
+          48
+        ]
+      }
+    },
+    {
+      "id": "vscode-model-picker",
+      "image": "real-03",
+      "question": "the model picker in the Agent panel on the right",
+      "expect": {
+        "box": [
+          2524,
+          932,
+          268,
+          40
+        ]
+      }
+    },
+    {
+      "id": "resolve-play",
+      "image": "real-05",
+      "question": "the play button under the video viewer",
+      "expect": {
+        "box": [
+          1528,
+          968,
+          36,
+          36
+        ]
+      }
+    },
+    {
+      "id": "resolve-titles",
+      "image": "real-05",
+      "question": "the Titles item in the Toolbox list",
+      "expect": {
+        "box": [
+          70,
+          1236,
+          84,
+          44
+        ]
+      }
+    },
+    {
+      "id": "resolve-zoom-x",
+      "image": "real-05",
+      "question": "the Zoom X value field in the Inspector",
+      "expect": {
+        "box": [
+          2496,
+          364,
+          100,
+          36
+        ]
+      }
+    },
+    {
+      "id": "resolve-a1-mute",
+      "image": "real-05",
+      "question": "the mute (M) button of audio track A1",
+      "expect": {
+        "box": [
+          1240,
+          1552,
+          32,
+          32
+        ]
+      }
+    },
+    {
+      "id": "resolve-fairlight",
+      "image": "real-05",
+      "question": "the Fairlight page button in the bottom bar (music note icon)",
+      "expect": {
+        "box": [
+          1998,
+          1910,
+          44,
+          44
+        ]
+      }
+    },
+    {
+      "id": "resolve-effects-tab",
+      "image": "real-05",
+      "question": "the Effects tab in the Inspector",
+      "expect": {
+        "box": [
+          2490,
+          200,
+          86,
+          84
+        ]
+      }
+    },
+    {
+      "id": "pdf-solar",
+      "image": "real-06",
+      "question": "the Solar collectors label in the diagram",
+      "expect": {
+        "text": "Solar collectors"
+      }
+    },
+    {
+      "id": "pdf-highlight",
+      "image": "real-06",
+      "question": "the highlighter pen button in Preview's toolbar",
+      "expect": {
+        "box": [
+          1620,
+          106,
+          40,
+          40
+        ]
+      }
+    },
+    {
+      "id": "pdf-zoom-in",
+      "image": "real-06",
+      "question": "the zoom in button",
+      "expect": {
+        "box": [
+          1526,
+          106,
+          40,
+          40
+        ]
+      }
+    },
+    {
+      "id": "pdf-building",
+      "image": "real-06",
+      "question": "the office building in the diagram",
+      "expect": {
+        "box": [
+          2256,
+          830,
+          138,
+          200
+        ]
+      }
+    },
+    {
+      "id": "pdf-share",
+      "image": "real-06",
+      "question": "the share button in the toolbar",
+      "expect": {
+        "box": [
+          2194,
+          106,
+          40,
+          40
+        ]
+      }
+    }
+  ]
+}

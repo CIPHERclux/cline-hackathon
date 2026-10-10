@@ -1,0 +1,687 @@
+{
+ "name": "flights-own-way",
+ "goal": "Find the cheapest flight from London to Paris next Friday on Google Flights",
+ "start": "home",
+ "goal_state": [
+  "sorted",
+  "picked_cheapest"
+ ],
+ "commit": "return",
+ "open_apps": [
+  "Google Chrome",
+  "Slack",
+  "Finder"
+ ],
+ "values": {
+  "Where to?": "Paris"
+ },
+ "deviations": [
+  {
+   "step": 1,
+   "comment": "ignores the first instruction: types Paris, picks the suggestion and opens the date picker on their own",
+   "actions": [
+    {
+     "type": "Paris",
+     "into": "Where to?"
+    },
+    {
+     "click": "Paris, France"
+    },
+    {
+     "click": "Departure"
+    }
+   ]
+  },
+  {
+   "step": 3,
+   "comment": "gets confused and says they're lost",
+   "actions": [
+    {
+     "say": "I'm lost"
+    }
+   ]
+  }
+ ],
+ "expectations": {
+  "max_steps": 6
+ },
+ "dock": [
+  {
+   "role": "AXDockItem",
+   "title": "Finder",
+   "frame": [
+    400,
+    850,
+    60,
+    44
+   ]
+  },
+  {
+   "role": "AXDockItem",
+   "title": "Google Chrome",
+   "frame": [
+    470,
+    850,
+    60,
+    44
+   ]
+  },
+  {
+   "role": "AXDockItem",
+   "title": "Slack",
+   "frame": [
+    540,
+    850,
+    60,
+    44
+   ]
+  }
+ ],
+ "states": {
+  "home": {
+   "app": "Google Chrome",
+   "bundle": "com.google.Chrome",
+   "window": "Google Flights - Find Cheap Flight Options",
+   "url": "https://www.google.com/travel/flights",
+   "sets": {
+    "Where from?": "London"
+   },
+   "nodes": [
+    {
+     "role": "AXLink",
+     "frame": [
+      20,
+      100,
+      120,
+      24
+     ],
+     "title": "Google Flights",
+     "click": "home"
+    },
+    {
+     "role": "AXPopUpButton",
+     "frame": [
+      300,
+      150,
+      120,
+      30
+     ],
+     "title": "Trip type",
+     "value": "One way",
+     "click": "home"
+    },
+    {
+     "role": "AXPopUpButton",
+     "frame": [
+      430,
+      150,
+      120,
+      30
+     ],
+     "title": "Passengers",
+     "value": "1",
+     "click": "home"
+    },
+    {
+     "role": "AXPopUpButton",
+     "frame": [
+      560,
+      150,
+      120,
+      30
+     ],
+     "title": "Cabin class",
+     "value": "Economy",
+     "click": "home"
+    },
+    {
+     "role": "AXComboBox",
+     "frame": [
+      300,
+      195,
+      260,
+      40
+     ],
+     "title": "Where from?",
+     "field": true
+    },
+    {
+     "role": "AXComboBox",
+     "frame": [
+      580,
+      195,
+      260,
+      40
+     ],
+     "title": "Where to?",
+     "field": true,
+     "on_type": [
+      {
+       "contains": "par",
+       "goto": "suggestions"
+      }
+     ],
+     "on_return": "to_paris"
+    },
+    {
+     "role": "AXTextField",
+     "frame": [
+      860,
+      195,
+      180,
+      40
+     ],
+     "title": "Departure",
+     "field": true,
+     "click": "calendar"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      640,
+      260,
+      120,
+      40
+     ],
+     "title": "Search",
+     "click": "results"
+    },
+    {
+     "role": "AXHeading",
+     "frame": [
+      300,
+      320,
+      400,
+      30
+     ],
+     "value": "Popular destinations"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      300,
+      360,
+      200,
+      24
+     ],
+     "title": "Barcelona",
+     "click": "home"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      520,
+      360,
+      200,
+      24
+     ],
+     "title": "Rome",
+     "click": "home"
+    }
+   ],
+   "keys": {
+    "cmd+l": "home"
+   }
+  },
+  "suggestions": {
+   "inherit": "home",
+   "nodes": [
+    {
+     "role": "AXRow",
+     "frame": [
+      580,
+      240,
+      320,
+      32
+     ],
+     "title": "Paris, France",
+     "click": "to_paris",
+     "sets": {
+      "Where to?": "Paris"
+     }
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      580,
+      274,
+      320,
+      32
+     ],
+     "title": "Paris Beauvais (BVA)",
+     "click": "to_paris",
+     "sets": {
+      "Where to?": "Paris Beauvais"
+     }
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      580,
+      308,
+      320,
+      32
+     ],
+     "title": "Paris Orly (ORY)",
+     "click": "to_paris",
+     "sets": {
+      "Where to?": "Paris Orly"
+     }
+    },
+    {
+     "role": "AXComboBox",
+     "frame": [
+      580,
+      195,
+      260,
+      40
+     ],
+     "title": "Where to?",
+     "field": true,
+     "on_return": "to_paris"
+    }
+   ],
+   "remove": [
+    "Search",
+    "Popular destinations",
+    "Barcelona",
+    "Rome"
+   ]
+  },
+  "to_paris": {
+   "inherit": "home",
+   "sets": {
+    "Where to?": "Paris"
+   }
+  },
+  "calendar": {
+   "inherit": "home",
+   "remove": [
+    "Popular destinations",
+    "Barcelona",
+    "Rome"
+   ],
+   "nodes": [
+    {
+     "role": "AXButton",
+     "frame": [
+      1080,
+      560,
+      80,
+      30
+     ],
+     "title": "Done",
+     "click": "dated"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      860,
+      300,
+      54,
+      34
+     ],
+     "label": "Thursday, 15 October 2026",
+     "title": "15",
+     "click": "calendar",
+     "sets": {
+      "Departure": "Thu, 15 Oct"
+     }
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      920,
+      300,
+      54,
+      34
+     ],
+     "label": "Friday, 16 October 2026",
+     "title": "16",
+     "click": "calendar",
+     "sets": {
+      "Departure": "Fri, 16 Oct"
+     }
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      980,
+      300,
+      54,
+      34
+     ],
+     "label": "Saturday, 17 October 2026",
+     "title": "17",
+     "click": "calendar",
+     "sets": {
+      "Departure": "Sat, 17 Oct"
+     }
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1040,
+      300,
+      54,
+      34
+     ],
+     "label": "Sunday, 18 October 2026",
+     "title": "18",
+     "click": "calendar",
+     "sets": {
+      "Departure": "Sun, 18 Oct"
+     }
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1100,
+      300,
+      54,
+      34
+     ],
+     "label": "Friday, 23 October 2026",
+     "title": "23",
+     "click": "calendar",
+     "sets": {
+      "Departure": "Fri, 23 Oct"
+     }
+    },
+    {
+     "role": "AXHeading",
+     "frame": [
+      860,
+      260,
+      200,
+      24
+     ],
+     "value": "October 2026"
+    }
+   ]
+  },
+  "dated": {
+   "inherit": "home"
+  },
+  "results": {
+   "inherit": "home",
+   "window": "London to Paris | Google Flights",
+   "url": "https://www.google.com/travel/flights/search?tfs=lon-par",
+   "remove": [
+    "Popular destinations",
+    "Barcelona",
+    "Rome"
+   ],
+   "nodes": [
+    {
+     "role": "AXHeading",
+     "frame": [
+      300,
+      320,
+      400,
+      30
+     ],
+     "value": "Departing flights"
+    },
+    {
+     "role": "AXPopUpButton",
+     "frame": [
+      1100,
+      320,
+      160,
+      30
+     ],
+     "title": "Sort by",
+     "value": "Top flights",
+     "click": "sort_menu"
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      300,
+      370,
+      960,
+      50
+     ],
+     "title": "07:15 \u2013 09:30 British Airways, nonstop, \u00a389",
+     "click": "picked_other"
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      300,
+      424,
+      960,
+      50
+     ],
+     "title": "10:05 \u2013 12:20 Air France, nonstop, \u00a362",
+     "click": "picked_other"
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      300,
+      478,
+      960,
+      50
+     ],
+     "title": "06:30 \u2013 08:45 easyJet, nonstop, \u00a345",
+     "click": "picked_cheapest"
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      300,
+      532,
+      960,
+      50
+     ],
+     "title": "13:40 \u2013 18:10 Lufthansa, 1 stop, \u00a3118",
+     "click": "picked_other"
+    }
+   ],
+   "loading_ms": 1800,
+   "loading_state": "loading"
+  },
+  "loading": {
+   "inherit": "home",
+   "remove": [
+    "Popular destinations",
+    "Barcelona",
+    "Rome"
+   ],
+   "nodes": [
+    {
+     "role": "AXStaticText",
+     "frame": [
+      600,
+      400,
+      200,
+      24
+     ],
+     "value": "Searching for flights\u2026"
+    }
+   ]
+  },
+  "sort_menu": {
+   "inherit": "results",
+   "loading_ms": 0,
+   "nodes": [
+    {
+     "role": "AXMenuItem",
+     "frame": [
+      1100,
+      355,
+      160,
+      26
+     ],
+     "title": "Top flights",
+     "click": "results"
+    },
+    {
+     "role": "AXMenuItem",
+     "frame": [
+      1100,
+      383,
+      160,
+      26
+     ],
+     "title": "Price",
+     "click": "sorted"
+    },
+    {
+     "role": "AXMenuItem",
+     "frame": [
+      1100,
+      411,
+      160,
+      26
+     ],
+     "title": "Departure time",
+     "click": "results"
+    },
+    {
+     "role": "AXMenuItem",
+     "frame": [
+      1100,
+      439,
+      160,
+      26
+     ],
+     "title": "Duration",
+     "click": "results"
+    }
+   ]
+  },
+  "sorted": {
+   "inherit": "results",
+   "loading_ms": 0,
+   "remove": [
+    "07:15 \u2013 09:30 British Airways, nonstop, \u00a389",
+    "10:05 \u2013 12:20 Air France, nonstop, \u00a362",
+    "06:30 \u2013 08:45 easyJet, nonstop, \u00a345",
+    "13:40 \u2013 18:10 Lufthansa, 1 stop, \u00a3118"
+   ],
+   "nodes": [
+    {
+     "role": "AXPopUpButton",
+     "frame": [
+      1100,
+      320,
+      160,
+      30
+     ],
+     "title": "Sort by",
+     "value": "Price",
+     "click": "sort_menu"
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      300,
+      370,
+      960,
+      50
+     ],
+     "title": "06:30 \u2013 08:45 easyJet, nonstop, \u00a345",
+     "click": "picked_cheapest"
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      300,
+      424,
+      960,
+      50
+     ],
+     "title": "10:05 \u2013 12:20 Air France, nonstop, \u00a362",
+     "click": "picked_other"
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      300,
+      478,
+      960,
+      50
+     ],
+     "title": "07:15 \u2013 09:30 British Airways, nonstop, \u00a389",
+     "click": "picked_other"
+    },
+    {
+     "role": "AXRow",
+     "frame": [
+      300,
+      532,
+      960,
+      50
+     ],
+     "title": "13:40 \u2013 18:10 Lufthansa, 1 stop, \u00a3118",
+     "click": "picked_other"
+    }
+   ]
+  },
+  "picked_cheapest": {
+   "inherit": "results",
+   "loading_ms": 0,
+   "window": "Booking options | Google Flights",
+   "nodes": [
+    {
+     "role": "AXHeading",
+     "frame": [
+      300,
+      320,
+      600,
+      30
+     ],
+     "value": "06:30 easyJet London \u2013 Paris \u00a345"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1100,
+      380,
+      160,
+      36
+     ],
+     "title": "Continue",
+     "click": "picked_cheapest"
+    }
+   ],
+   "remove": [
+    "07:15 \u2013 09:30 British Airways, nonstop, \u00a389",
+    "10:05 \u2013 12:20 Air France, nonstop, \u00a362",
+    "06:30 \u2013 08:45 easyJet, nonstop, \u00a345",
+    "13:40 \u2013 18:10 Lufthansa, 1 stop, \u00a3118",
+    "Departing flights",
+    "Sort by"
+   ]
+  },
+  "picked_other": {
+   "inherit": "results",
+   "loading_ms": 0,
+   "window": "Booking options | Google Flights",
+   "nodes": [
+    {
+     "role": "AXHeading",
+     "frame": [
+      300,
+      320,
+      600,
+      30
+     ],
+     "value": "Selected flight"
+    }
+   ],
+   "remove": [
+    "07:15 \u2013 09:30 British Airways, nonstop, \u00a389",
+    "10:05 \u2013 12:20 Air France, nonstop, \u00a362",
+    "06:30 \u2013 08:45 easyJet, nonstop, \u00a345",
+    "13:40 \u2013 18:10 Lufthansa, 1 stop, \u00a3118",
+    "Departing flights",
+    "Sort by"
+   ]
+  }
+ },
+ "max_seconds": 240
+}

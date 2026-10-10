@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "defaultProfile": "demo",
+  "profiles": {
+    "demo": {
+      "comment": "\u00a77.4 slot candidates through the Cline provider (D22). Auth is the SDK's Cline sign-in stored in CLINE_DIR (D10). Claude 5.5 family per owner (D73): Haiku 5.5 fast (Haiku 4.5 fallback until confirmed on the account), Sonnet 5.5 teaching and grounding, Opus 5.5 deep.",
+      "providerId": "cline",
+      "slots": {
+        "fast": {
+          "primary": "anthropic/claude-haiku-5.5",
+          "fallbacks": [
+            "anthropic/claude-haiku-4.5",
+            "google/gemini-3.8-flash"
+          ]
+        },
+        "teaching": {
+          "primary": "anthropic/claude-sonnet-5.5",
+          "fallbacks": [
+            "google/gemini-3.8-flash",
+            "openai/gpt-6-luna"
+          ]
+        },
+        "grounding": {
+          "primary": "anthropic/claude-sonnet-5.5",
+          "fallbacks": [
+            "anthropic/claude-opus-5.5",
+            "google/gemini-3.8-flash",
+            "qwen/qwen3-vl-235b-a22b-instruct"
+          ]
+        },
+        "deep": {
+          "primary": "anthropic/claude-opus-5.5",
+          "fallbacks": [
+            "anthropic/claude-fable-5.1",
+            "openai/gpt-6-sol"
+          ]
+        }
+      },
+      "vision": [
+        "anthropic/claude-haiku-5.5",
+        "anthropic/claude-haiku-4.5",
+        "anthropic/claude-sonnet-5.5",
+        "anthropic/claude-opus-5.5",
+        "anthropic/claude-fable-5.1",
+        "google/gemini-3.8-flash",
+        "openai/gpt-6-luna",
+        "openai/gpt-6-sol",
+        "qwen/qwen3-vl-235b-a22b-instruct"
+      ],
+      "visionComment": "Models that read the S1 probe through Cline (S02, D43). The app only sends screenshots to these (\u00a77.4 capability guard, P-NOVISION)."
+    },
+    "dev": {
+      "comment": "Free development substitute until hackathon-day Cline credits (D37). Same ClineCore path, different provider. Key from env GEMINI_API_KEY. Owner decision 2026-10-03: every slot uses gemini-flash-lite-latest while testing (fast, reliable on the free tier, 500 requests/day); gemini-3.5-flash-lite as fallback (D47).",
+      "providerId": "gemini",
+      "apiKeyEnv": "GEMINI_API_KEY",
+      "slots": {
+        "fast": {
+          "primary": "gemini-flash-lite-latest",
+          "fallbacks": [
+            "gemini-3.5-flash-lite"
+          ]
+        },
+        "teaching": {
+          "primary": "gemini-flash-lite-latest",
+          "fallbacks": [
+            "gemini-3.5-flash-lite"
+          ]
+        },
+        "grounding": {
+          "primary": "gemini-flash-lite-latest",
+          "fallbacks": [
+            "gemini-3.5-flash-lite"
+          ]
+        },
+        "deep": {
+          "primary": "gemini-flash-lite-latest",
+          "fallbacks": [
+            "gemini-3.5-flash-lite"
+          ]
+        }
+      },
+      "vision": [
+        "gemini-flash-lite-latest",
+        "gemini-3.5-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.6-flash"
+      ]
+    },
+    "stub": {
+      "comment": "Credit-free local stub for tests (\u00a711.1). Base URL from env CHALK_STUB_BASE_URL.",
+      "providerId": "openai-compatible",
+      "baseUrlEnv": "CHALK_STUB_BASE_URL",
+      "apiKey": "stub",
+      "slots": {
+        "fast": {
+          "primary": "stub-fast",
+          "fallbacks": []
+        },
+        "teaching": {
+          "primary": "stub-teaching",
+          "fallbacks": []
+        },
+        "grounding": {
+          "primary": "stub-grounding",
+          "fallbacks": []
+        },
+        "deep": {
+          "primary": "stub-deep",
+          "fallbacks": []
+        }
+      },
+      "vision": [
+        "stub-fast",
+        "stub-teaching",
+        "stub-grounding",
+        "stub-deep"
+      ]
+    }
+  }
+}

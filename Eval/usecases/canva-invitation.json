@@ -1,0 +1,497 @@
+{
+ "name": "canva-invitation",
+ "goal": "Make a birthday invitation for Maya's 8th birthday in Canva and download it",
+ "start": "canva_home",
+ "goal_state": [
+  "downloaded"
+ ],
+ "commit": "idle",
+ "open_apps": [
+  "Google Chrome",
+  "Finder"
+ ],
+ "values": {
+  "Search millions of templates": "birthday invitation"
+ },
+ "answers": {
+  "template": "the kids birthday one"
+ },
+ "expectations": {
+  "max_steps": 8
+ },
+ "dock": [
+  {
+   "role": "AXDockItem",
+   "title": "Finder",
+   "frame": [
+    400,
+    850,
+    60,
+    44
+   ]
+  },
+  {
+   "role": "AXDockItem",
+   "title": "Google Chrome",
+   "frame": [
+    470,
+    850,
+    60,
+    44
+   ]
+  },
+  {
+   "role": "AXDockItem",
+   "title": "Slack",
+   "frame": [
+    540,
+    850,
+    60,
+    44
+   ]
+  }
+ ],
+ "states": {
+  "canva_home": {
+   "app": "Google Chrome",
+   "bundle": "com.google.Chrome",
+   "window": "Home - Canva",
+   "url": "https://www.canva.com/",
+   "nodes": [
+    {
+     "role": "AXTextField",
+     "frame": [
+      420,
+      180,
+      600,
+      44
+     ],
+     "placeholder": "Search millions of templates",
+     "field": true,
+     "on_return": "canva_results"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1220,
+      100,
+      140,
+      36
+     ],
+     "title": "Create a design",
+     "click": "canva_home"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      20,
+      140,
+      120,
+      24
+     ],
+     "title": "Home",
+     "click": "canva_home"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      20,
+      170,
+      120,
+      24
+     ],
+     "title": "Projects",
+     "click": "canva_home"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      20,
+      200,
+      120,
+      24
+     ],
+     "title": "Templates",
+     "click": "canva_home"
+    },
+    {
+     "role": "AXHeading",
+     "frame": [
+      420,
+      120,
+      600,
+      40
+     ],
+     "value": "What will you design today?"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      420,
+      260,
+      110,
+      80
+     ],
+     "title": "Presentation",
+     "click": "canva_home"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      540,
+      260,
+      110,
+      80
+     ],
+     "title": "Social media",
+     "click": "canva_home"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      660,
+      260,
+      110,
+      80
+     ],
+     "title": "Video",
+     "click": "canva_home"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      780,
+      260,
+      110,
+      80
+     ],
+     "title": "Print products",
+     "click": "canva_home"
+    }
+   ]
+  },
+  "canva_results": {
+   "inherit": "canva_home",
+   "window": "invitation - Canva",
+   "url": "https://www.canva.com/search/templates?q=invitation",
+   "loading_ms": 1200,
+   "loading_state": "canva_home",
+   "remove": [
+    "Presentation",
+    "Social media",
+    "Video",
+    "Print products",
+    "What will you design today?"
+   ],
+   "nodes": [
+    {
+     "role": "AXHeading",
+     "frame": [
+      420,
+      240,
+      600,
+      30
+     ],
+     "value": "Invitation templates"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      420,
+      290,
+      180,
+      240
+     ],
+     "title": "Blue Floral Wedding Invitation",
+     "click": "editor_wedding"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      620,
+      290,
+      180,
+      240
+     ],
+     "title": "Colourful Kids Birthday Party Invitation",
+     "click": "editor_birthday"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      820,
+      290,
+      180,
+      240
+     ],
+     "title": "Baby Shower Invitation",
+     "click": "editor_wedding"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      1020,
+      290,
+      180,
+      240
+     ],
+     "title": "Dinner Party Invitation",
+     "click": "editor_wedding"
+    }
+   ]
+  },
+  "editor_birthday": {
+   "app": "Google Chrome",
+   "bundle": "com.google.Chrome",
+   "window": "Colourful Kids Birthday Party Invitation - Canva",
+   "url": "https://www.canva.com/design/DAF1/edit",
+   "nodes": [
+    {
+     "role": "AXButton",
+     "frame": [
+      1180,
+      64,
+      90,
+      32
+     ],
+     "title": "Share",
+     "click": "share_panel"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1080,
+      64,
+      90,
+      32
+     ],
+     "title": "Print",
+     "click": "editor_birthday"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      20,
+      100,
+      60,
+      40
+     ],
+     "title": "Design",
+     "click": "editor_birthday"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      20,
+      150,
+      60,
+      40
+     ],
+     "title": "Elements",
+     "click": "editor_birthday"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      20,
+      200,
+      60,
+      40
+     ],
+     "title": "Text",
+     "click": "editor_birthday"
+    },
+    {
+     "role": "AXLink",
+     "frame": [
+      20,
+      250,
+      60,
+      40
+     ],
+     "title": "Uploads",
+     "click": "editor_birthday"
+    },
+    {
+     "role": "AXGroup",
+     "frame": [
+      420,
+      140,
+      600,
+      640
+     ]
+    },
+    {
+     "role": "AXTextArea",
+     "frame": [
+      470,
+      200,
+      500,
+      70
+     ],
+     "label": "You're invited to Lily's 6th Birthday!",
+     "field": true,
+     "on_type": [
+      {
+       "contains": "Maya",
+       "goto": "edited"
+      }
+     ]
+    },
+    {
+     "role": "AXStaticText",
+     "frame": [
+      470,
+      300,
+      500,
+      30
+     ],
+     "value": "Saturday 3pm \u00b7 12 Oak Street"
+    }
+   ]
+  },
+  "editor_wedding": {
+   "inherit": "editor_birthday",
+   "window": "Blue Floral Wedding Invitation - Canva",
+   "remove": [
+    "You're invited to Lily's 6th Birthday!",
+    "Saturday 3pm \u00b7 12 Oak Street"
+   ],
+   "nodes": [
+    {
+     "role": "AXStaticText",
+     "frame": [
+      470,
+      200,
+      500,
+      70
+     ],
+     "value": "Together with their families"
+    }
+   ]
+  },
+  "edited": {
+   "inherit": "editor_birthday"
+  },
+  "share_panel": {
+   "inherit": "edited",
+   "nodes": [
+    {
+     "role": "AXGroup",
+     "frame": [
+      1000,
+      100,
+      400,
+      300
+     ]
+    },
+    {
+     "role": "AXHeading",
+     "frame": [
+      1020,
+      110,
+      300,
+      24
+     ],
+     "value": "Share this design"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1020,
+      150,
+      360,
+      36
+     ],
+     "title": "Copy link",
+     "click": "share_panel"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1020,
+      195,
+      170,
+      60
+     ],
+     "title": "Download",
+     "click": "download_panel"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1200,
+      195,
+      170,
+      60
+     ],
+     "title": "Present",
+     "click": "edited"
+    }
+   ]
+  },
+  "download_panel": {
+   "inherit": "edited",
+   "nodes": [
+    {
+     "role": "AXGroup",
+     "frame": [
+      1000,
+      100,
+      400,
+      300
+     ]
+    },
+    {
+     "role": "AXHeading",
+     "frame": [
+      1020,
+      110,
+      300,
+      24
+     ],
+     "value": "Download"
+    },
+    {
+     "role": "AXPopUpButton",
+     "frame": [
+      1020,
+      150,
+      360,
+      36
+     ],
+     "title": "File type",
+     "value": "PNG",
+     "click": "download_panel"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1020,
+      330,
+      360,
+      40
+     ],
+     "title": "Download",
+     "click": "downloaded"
+    }
+   ]
+  },
+  "downloaded": {
+   "inherit": "edited",
+   "nodes": [
+    {
+     "role": "AXStaticText",
+     "frame": [
+      1020,
+      110,
+      300,
+      24
+     ],
+     "value": "Your design is downloading"
+    }
+   ]
+  }
+ },
+ "max_seconds": 240
+}

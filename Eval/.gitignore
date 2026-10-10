@@ -1,0 +1,5 @@
+# Compiled CLIs, generated mark images, cached model answers (D40)
+.build/
+pointing/.cache/
+# Real screenshots can hold personal data; keep them local (D40)
+pointing/fixtures/real-*.png

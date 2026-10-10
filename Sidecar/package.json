@@ -1,0 +1,17 @@
+{
+  "name": "tutor-engine",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "build:bin": "bun scripts/build-bin.ts"
+  },
+  "dependencies": {
+    "@cline/sdk": "0.0.90"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.2",
+    "typescript": "5.9.3"
+  }
+}

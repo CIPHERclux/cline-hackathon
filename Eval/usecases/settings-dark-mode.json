@@ -1,0 +1,56 @@
+{
+  "name": "settings-dark-mode",
+  "goal": "Turn on dark mode",
+  "start": "general",
+  "goal_state": ["dark"],
+  "open_apps": ["System Settings", "Finder"],
+  "expectations": {"max_steps": 3},
+  "dock": [
+    {"role": "AXDockItem", "title": "Finder", "frame": [400, 850, 60, 44], "click": "general"},
+    {"role": "AXDockItem", "title": "System Settings", "frame": [470, 850, 60, 44], "click": "general"}
+  ],
+  "states": {
+    "general": {
+      "app": "System Settings", "bundle": "com.apple.systempreferences", "window": "General",
+      "nodes": [
+        {"role": "AXTextField", "subrole": "AXSearchField", "placeholder": "Search", "frame": [20, 70, 200, 26], "field": true},
+        {"role": "AXRow", "title": "Wi-Fi", "frame": [20, 110, 200, 26], "click": "general"},
+        {"role": "AXRow", "title": "Bluetooth", "frame": [20, 138, 200, 26], "click": "general"},
+        {"role": "AXRow", "title": "Network", "frame": [20, 166, 200, 26], "click": "general"},
+        {"role": "AXRow", "title": "General", "frame": [20, 210, 200, 26], "selected": true, "click": "general"},
+        {"role": "AXRow", "title": "Accessibility", "frame": [20, 238, 200, 26], "click": "general"},
+        {"role": "AXRow", "title": "Appearance", "frame": [20, 266, 200, 26], "click": "appearance"},
+        {"role": "AXRow", "title": "Control Centre", "frame": [20, 294, 200, 26], "click": "general"},
+        {"role": "AXRow", "title": "Desktop & Dock", "frame": [20, 322, 200, 26], "click": "general"},
+        {"role": "AXRow", "title": "Displays", "frame": [20, 350, 200, 26], "click": "general"},
+        {"role": "AXHeading", "value": "General", "frame": [260, 70, 300, 30]},
+        {"role": "AXButton", "title": "About", "frame": [260, 120, 600, 34], "click": "general"},
+        {"role": "AXButton", "title": "Software Update", "frame": [260, 160, 600, 34], "click": "general"},
+        {"role": "AXButton", "title": "Storage", "frame": [260, 200, 600, 34], "click": "general"},
+        {"role": "AXButton", "title": "Login Items & Extensions", "frame": [260, 240, 600, 34], "click": "general"}
+      ]
+    },
+    "appearance": {
+      "inherit": "general", "window": "Appearance",
+      "remove": ["General", "About", "Software Update", "Storage", "Login Items & Extensions"],
+      "nodes": [
+        {"role": "AXRow", "title": "General", "frame": [20, 210, 200, 26], "click": "general"},
+        {"role": "AXRow", "title": "Appearance", "frame": [20, 266, 200, 26], "selected": true, "click": "appearance"},
+        {"role": "AXHeading", "value": "Appearance", "frame": [260, 70, 300, 30]},
+        {"role": "AXStaticText", "value": "Appearance", "frame": [260, 130, 120, 20]},
+        {"role": "AXRadioButton", "title": "Auto", "frame": [420, 125, 70, 24], "click": "appearance"},
+        {"role": "AXRadioButton", "title": "Light", "frame": [500, 125, 70, 24], "selected": true, "click": "appearance"},
+        {"role": "AXRadioButton", "title": "Dark", "frame": [580, 125, 70, 24], "click": "dark"},
+        {"role": "AXStaticText", "value": "Accent colour", "frame": [260, 180, 120, 20]},
+        {"role": "AXPopUpButton", "title": "Accent colour", "value": "Multicolour", "frame": [420, 175, 160, 24], "click": "appearance"}
+      ]
+    },
+    "dark": {
+      "inherit": "appearance",
+      "nodes": [
+        {"role": "AXRadioButton", "title": "Light", "frame": [500, 125, 70, 24], "click": "appearance"},
+        {"role": "AXRadioButton", "title": "Dark", "frame": [580, 125, 70, 24], "selected": true, "click": "dark"}
+      ]
+    }
+  }
+}

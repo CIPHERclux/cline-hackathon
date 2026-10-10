@@ -1,0 +1,27 @@
+worker/node_modules/
+worker/.dev.vars
+.DS_Store
+*.xcuserstate
+build/
+releases/
+.claude/*
+!.claude/skills/
+coding-plans/
+Config/Signing.local.xcconfig
+Eval/guide-sim/.build/
+
+# Installed dependencies, generated outputs and local machine state
+node_modules/
+.build/
+.swiftpm/
+dist/
+DerivedData/
+xcuserdata/
+*.bun-build
+.env
+.env.*
+!.env.example
+*.log
+*.dmg
+*.zip
+*.app/

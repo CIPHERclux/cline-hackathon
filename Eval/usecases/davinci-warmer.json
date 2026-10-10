@@ -1,0 +1,368 @@
+{
+ "name": "davinci-warmer",
+ "goal": "Make this clip look warmer in DaVinci Resolve",
+ "start": "edit",
+ "goal_state": [
+  "warmer"
+ ],
+ "commit": "return",
+ "open_apps": [
+  "DaVinci Resolve",
+  "Finder"
+ ],
+ "values": {
+  "Temp": "1000"
+ },
+ "expectations": {
+  "max_steps": 4
+ },
+ "dock": [
+  {
+   "role": "AXDockItem",
+   "title": "DaVinci Resolve",
+   "frame": [
+    470,
+    850,
+    60,
+    44
+   ],
+   "click": "edit"
+  }
+ ],
+ "states": {
+  "edit": {
+   "app": "DaVinci Resolve",
+   "bundle": "com.blackmagic-design.DaVinciResolve",
+   "window": "Beach Day - Edit",
+   "accessible": false,
+   "nodes": [
+    {
+     "role": "AXButton",
+     "frame": [
+      500,
+      800,
+      60,
+      30
+     ],
+     "title": "Media",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      570,
+      800,
+      60,
+      30
+     ],
+     "title": "Cut",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      640,
+      800,
+      60,
+      30
+     ],
+     "title": "Edit",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      710,
+      800,
+      60,
+      30
+     ],
+     "title": "Fusion",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      780,
+      800,
+      60,
+      30
+     ],
+     "title": "Color",
+     "click": "color"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      850,
+      800,
+      60,
+      30
+     ],
+     "title": "Fairlight",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      920,
+      800,
+      60,
+      30
+     ],
+     "title": "Deliver",
+     "click": "edit"
+    },
+    {
+     "role": "AXStaticText",
+     "frame": [
+      300,
+      520,
+      200,
+      20
+     ],
+     "value": "Timeline 1"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      300,
+      560,
+      240,
+      40
+     ],
+     "title": "Beach_Clip_01",
+     "click": "edit"
+    },
+    {
+     "role": "AXStaticText",
+     "frame": [
+      500,
+      100,
+      400,
+      24
+     ],
+     "value": "Viewer"
+    }
+   ]
+  },
+  "color": {
+   "app": "DaVinci Resolve",
+   "bundle": "com.blackmagic-design.DaVinciResolve",
+   "window": "Beach Day - Color",
+   "accessible": false,
+   "nodes": [
+    {
+     "role": "AXButton",
+     "frame": [
+      500,
+      800,
+      60,
+      30
+     ],
+     "title": "Media",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      570,
+      800,
+      60,
+      30
+     ],
+     "title": "Cut",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      640,
+      800,
+      60,
+      30
+     ],
+     "title": "Edit",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      710,
+      800,
+      60,
+      30
+     ],
+     "title": "Fusion",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      780,
+      800,
+      60,
+      30
+     ],
+     "title": "Color",
+     "click": "color"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      850,
+      800,
+      60,
+      30
+     ],
+     "title": "Fairlight",
+     "click": "edit"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      920,
+      800,
+      60,
+      30
+     ],
+     "title": "Deliver",
+     "click": "edit"
+    },
+    {
+     "role": "AXStaticText",
+     "frame": [
+      500,
+      100,
+      400,
+      24
+     ],
+     "value": "Viewer"
+    },
+    {
+     "role": "AXButton",
+     "frame": [
+      1100,
+      120,
+      120,
+      30
+     ],
+     "title": "Node 01",
+     "click": "color"
+    },
+    {
+     "role": "AXStaticText",
+     "frame": [
+      300,
+      560,
+      100,
+      20
+     ],
+     "value": "Primaries - Color Wheels"
+    },
+    {
+     "role": "AXGroup",
+     "frame": [
+      300,
+      600,
+      120,
+      120
+     ],
+     "title": "Lift",
+     "click": "color_lift"
+    },
+    {
+     "role": "AXGroup",
+     "frame": [
+      440,
+      600,
+      120,
+      120
+     ],
+     "title": "Gamma",
+     "click": "color_lift"
+    },
+    {
+     "role": "AXGroup",
+     "frame": [
+      580,
+      600,
+      120,
+      120
+     ],
+     "title": "Gain",
+     "click": "warmer"
+    },
+    {
+     "role": "AXGroup",
+     "frame": [
+      720,
+      600,
+      120,
+      120
+     ],
+     "title": "Offset",
+     "click": "warmer"
+    },
+    {
+     "role": "AXTextField",
+     "frame": [
+      900,
+      600,
+      80,
+      24
+     ],
+     "title": "Temp",
+     "field": true,
+     "on_type": [
+      {
+       "contains": "0",
+       "goto": "warmer"
+      }
+     ]
+    },
+    {
+     "role": "AXTextField",
+     "frame": [
+      900,
+      640,
+      80,
+      24
+     ],
+     "title": "Tint",
+     "field": true
+    },
+    {
+     "role": "AXTextField",
+     "frame": [
+      900,
+      680,
+      80,
+      24
+     ],
+     "title": "Saturation",
+     "field": true
+    }
+   ]
+  },
+  "color_lift": {
+   "inherit": "color"
+  },
+  "warmer": {
+   "inherit": "color",
+   "nodes": [
+    {
+     "role": "AXStaticText",
+     "frame": [
+      500,
+      130,
+      300,
+      20
+     ],
+     "value": "Warmer image"
+    }
+   ]
+  }
+ },
+ "max_seconds": 180
+}

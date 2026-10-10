@@ -1,0 +1,53 @@
+{
+  "name": "mail-write",
+  "goal": "Write an email to sam@example.com with the subject Running late, saying I'll be 15 minutes late, and send it",
+  "start": "inbox",
+  "goal_state": ["sent"],
+  "commit": "click_next",
+  "open_apps": ["Mail", "Google Chrome", "Finder"],
+  "values": {"To": "sam@example.com", "Subject": "Running late", "Message body": "Hi Sam, I'll be about 15 minutes late."},
+  "deviations": [
+    {"step": 3, "comment": "types the subject on their own, then clicks into the body (no Return or Tab)",
+     "actions": [{"type": "Running late", "into": "Subject"}, {"click": "Message body"}]}
+  ],
+  "expectations": {"max_steps": 6},
+  "dock": [
+    {"role": "AXDockItem", "title": "Finder", "frame": [400, 850, 60, 44]},
+    {"role": "AXDockItem", "title": "Mail", "frame": [470, 850, 60, 44], "click": "inbox"},
+    {"role": "AXDockItem", "title": "Google Chrome", "frame": [540, 850, 60, 44]}
+  ],
+  "states": {
+    "inbox": {
+      "app": "Mail", "bundle": "com.apple.mail", "window": "Inbox – 12 messages",
+      "keys": {"cmd+n": "compose"},
+      "nodes": [
+        {"role": "AXButton", "label": "Get Mail", "frame": [300, 64, 34, 26], "click": "inbox"},
+        {"role": "AXButton", "label": "New Message", "frame": [340, 64, 34, 26], "click": "compose"},
+        {"role": "AXButton", "label": "Archive", "frame": [380, 64, 34, 26], "click": "inbox"},
+        {"role": "AXButton", "label": "Delete", "frame": [420, 64, 34, 26], "click": "inbox"},
+        {"role": "AXButton", "label": "Reply", "frame": [460, 64, 34, 26], "click": "inbox"},
+        {"role": "AXTextField", "subrole": "AXSearchField", "placeholder": "Search", "frame": [1150, 64, 220, 26], "field": true},
+        {"role": "AXRow", "title": "Inbox", "frame": [10, 110, 180, 24], "selected": true, "click": "inbox"},
+        {"role": "AXRow", "title": "Sent", "frame": [10, 136, 180, 24], "click": "inbox"},
+        {"role": "AXRow", "title": "Drafts", "frame": [10, 162, 180, 24], "click": "inbox"},
+        {"role": "AXRow", "title": "Alex Kim — Lunch on Friday?", "frame": [200, 110, 420, 50], "click": "inbox"},
+        {"role": "AXRow", "title": "Newsletter — October picks", "frame": [200, 162, 420, 50], "click": "inbox"}
+      ]
+    },
+    "compose": {
+      "inherit": "inbox", "window": "New Message", "focus": "To",
+      "nodes": [
+        {"role": "AXSheet", "subrole": "AXStandardWindow", "title": "New Message", "frame": [640, 100, 700, 560]},
+        {"role": "AXButton", "label": "Send", "frame": [660, 140, 40, 28], "click": "sent"},
+        {"role": "AXTextField", "title": "To", "frame": [740, 190, 560, 24], "field": true},
+        {"role": "AXTextField", "title": "Cc", "frame": [740, 222, 560, 24], "field": true},
+        {"role": "AXTextField", "title": "Subject", "frame": [740, 254, 560, 24], "field": true},
+        {"role": "AXTextArea", "label": "Message body", "frame": [660, 300, 660, 340], "field": true}
+      ]
+    },
+    "sent": {
+      "inherit": "inbox", "window": "Inbox – 12 messages",
+      "nodes": [{"role": "AXStaticText", "value": "Message sent", "frame": [640, 120, 200, 20]}]
+    }
+  }
+}

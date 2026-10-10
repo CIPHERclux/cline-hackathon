@@ -1,0 +1,5 @@
+// Signing.xcconfig: base configuration for the app target (Chalk).
+// Per-developer signing lives in Signing.local.xcconfig (gitignored), so
+// project.pbxproj never carries anyone's team or identity and stays committable.
+// `#include?` is optional: a fresh clone without the local file still parses.
+#include? "Signing.local.xcconfig"
