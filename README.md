@@ -1,5 +1,31 @@
 # Chalk — your screen-side guide
 
+## The problem: connected isn't the same as empowered
+
+India is getting online, but access to digital tools does not automatically translate into confidence using them. People may have devices and internet access yet still struggle with unfamiliar interfaces, online forms, email, or simply knowing what to do next. **The gap isn't just access to technology; it's the ability to use it confidently.**
+
+The problem research presented in our project slides highlights two distinct measures:
+
+| Measure | Finding | Population and scope |
+| --- | --- | --- |
+| Practical capability | **26.8%** | Indian youth aged 15–24 who reported all three abilities: searching for information online, sending or receiving emails, and conducting online banking transactions. |
+| Household connectivity | **86.3%** | Indian households with internet access within their household premises in 2025. |
+
+Sources cited in the project slides: **MoSPI** (`mospi-gov-in-678000a5`) for practical capability and **PIB** (`pib-gov-in-ede1d033`) for household connectivity. These figures describe different populations and measures; they are not a direct like-for-like comparison.
+
+## Who we're building for
+
+**Digital confidence should have no age or barrier.** From everyday tasks to new skills, everyone deserves a guide.
+
+- **Senior citizens:** build independence when sending an email, attaching a document, or joining an online meeting, without always waiting for someone else's help.
+- **Children and students:** understand unfamiliar material, learn software, and practise digital skills beyond the classroom at a self-directed pace.
+- **Women:** navigate online applications, documents, and unfamiliar services with greater confidence, agency, and independence.
+- **Anyone learning something new:** explore unfamiliar tools through on-demand guidance and self-paced practice, with less dependence on constant one-to-one help.
+
+## Our approach
+
+Chalk brings guidance to the screen where the task is happening. Instead of leaving users to translate generic instructions into unfamiliar interfaces, it explains, points, and walks through the next step while the user performs the action. The goal is to build practical confidence—not take control away from the person learning. The current implementation is a native macOS app; broader digital inclusion is the motivation, not a claim of support for every device or platform.
+
 Chalk is a native macOS assistant that explains what is on your screen, speaks its answer, points to controls, draws annotations, and guides you through tasks one step at a time. Hold **Control + Option** to ask a question. You stay in control of every click and keystroke.
 
 ## Architecture
